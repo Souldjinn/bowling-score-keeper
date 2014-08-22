@@ -1,13 +1,13 @@
 class Bowling_Score
-	attr_reader :player_name
+	attr_reader :name, :score
 	def initialize(player_name)
-		@player_name = player_name
-		@player_score = []
+		@name = player_name
+		@score = 0
 	end
 
 end
 
-def start_game_and_menu
+def setup_game_menu
 	user_choice = 0
 
 	until user_choice.to_i == 2
@@ -36,14 +36,31 @@ def game_setup
 
 	print "\n"
 	puts "Great! The players on the list are:"
-	all_scores.each_with_index{|player, index| puts "#{index+1}. #{player.player_name}"}
+	all_scores.each_with_index{|player, index| puts "#{index+1}. #{player.name}"}
 	print "\n"
 
+	game_logic(all_scores)
 end
 
+def game_logic(score_list)
+	10.times do 
+		all_players_turns(score_list)
+	end
 
+	reveal_score_results(score_list)
+end
 
+def all_players_turns(score_list)
+	score_list.each do |player|
 
+	end
+end
 
+def reveal_score_results(score_list)
+	score_list.each_with_index do |player, index|
+		puts "#{player.name}'s score is: #{player.score}"
+	end
+	puts "\n"
+end
 
-start_game_and_menu
+setup_game_menu
