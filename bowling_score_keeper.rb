@@ -4,7 +4,42 @@ class Bowling_Score
 
 	def initialize(player_name)
 		@name = player_name
-		@score = 0
+		@score = []
+		@final_score = 0
+	end
+
+	def count_score
+
+		self.score.map!.with_index do |frame, index|
+				end_value = 0
+
+			if 	index+1 == score.length
+				end_value = frame.to_i
+			elsif frame == "ST"
+				end_value +=10
+				end_value += check_frame(index+1)
+				end_value += check_frame(index+2)
+			elsif frame == "10"
+				end_value +=10
+				end_value += check_frame(index+1)
+			else
+				end_value = frame.to_i
+			end
+
+			end_value
+		end
+
+	end
+
+	def check_frame(next_step)
+		base = 0
+	
+		if @score[next_step] == "ST" || @score[next_step] == "10"
+			base +=10
+		else
+			base += @score[next_step].to_i
+		end
+		return base 
 	end
 
 end
@@ -45,30 +80,45 @@ def game_setup
 end
 
 def game_logic(score_list)
-	10.times do 
+	9.times do 
 		all_players_turns(score_list)
 	end
 
+	complete_final_turn(score_list)
+	compute_scores(score_list)
 	reveal_score_results(score_list)
+end
+
+def complete_final_turn(score_list)
+	score_list.each do |player|
+		puts "Last Turn"
+	end
+end
+
+def compute_scores(score_list)
+	score_list.each{|player| player.count_score}
 end
 
 def all_players_turns(score_list)
 	score_list.each do |player|
-		player.score += ask_for_pins_hit(player)
+		player.score << ask_for_pins_hit(player)
 	end
 end
 
 def ask_for_pins_hit(player)
 	puts "Its #{player.name}'s turn!"
 	puts "How many pins did #{player.name} hit? (Dont lie now)"
-	pins_hit = gets.chomp.to_i
+	puts "ST for strike, 10 for spare"
+	pins_hit = gets.chomp
 	return pins_hit
 end
 
 def reveal_score_results(score_list)
 	score_list.each_with_index do |player, index|
-		puts "#{player.name}'s score is: #{player.score}"
+		puts "#{player.name}'s score is: "
+		print "#{player.score} \n"
 	end
+
 	puts "\n"
 end
 
