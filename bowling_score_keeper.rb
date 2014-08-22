@@ -5,7 +5,7 @@ class Bowling_Score
 	def initialize(player_name)
 		@name = player_name
 		@score = []
-		@final_score = 0
+		@final_score = []
 	end
 
 	def count_score
@@ -13,9 +13,7 @@ class Bowling_Score
 		self.score.map!.with_index do |frame, index|
 				end_value = 0
 
-			if 	index+1 == score.length
-				end_value = frame.to_i
-			elsif frame == "ST"
+			if frame == "ST"
 				end_value +=10
 				end_value += check_frame(index+1)
 				end_value += check_frame(index+2)
@@ -44,7 +42,8 @@ class Bowling_Score
 
 	def generate_final_score 
 		p @score
-		@final_score = @score.inject(:+)
+		10.times{@final_score << @score.shift}
+		@final_score = @final_score.inject(:+)
 	end
 
 end
@@ -98,11 +97,13 @@ def complete_final_turn(score_list)
 	puts "This is the final turn for each player"
 	puts "You can score up to 30 points if you score"
 	puts "Three strikes in a row"
-	puts "Remember to factor this in for the final frame"
+	puts "you will have 3 chances to input scores." 
 
 	score_list.each do |player|
-		puts "How much did #{player.name} score for the final frame? \n"
-		player.score<< gets.chomp
+		3.times do |x|
+			puts "How much did #{player.name} score for final frame throw #{x+1} \n"
+			player.score<< gets.chomp
+		end
 	end
 end
 
