@@ -1,5 +1,5 @@
 class Bowling_Score
-	attr_reader :name, :score
+	attr_reader :name, :score, :final_score
 	attr_writer :score
 
 	def initialize(player_name)
@@ -40,6 +40,11 @@ class Bowling_Score
 			base += @score[next_step].to_i
 		end
 		return base 
+	end
+
+	def generate_final_score 
+		p @score
+		@final_score = @score.inject(:+)
 	end
 
 end
@@ -90,13 +95,20 @@ def game_logic(score_list)
 end
 
 def complete_final_turn(score_list)
+	puts "This is the final turn for each player"
+	puts "You can score up to 30 points if you score"
+	puts "Three strikes in a row"
+	puts "Remember to factor this in for the final frame"
+
 	score_list.each do |player|
-		puts "Last Turn"
+		puts "How much did #{player.name} score for the final frame? \n"
+		player.score<< gets.chomp
 	end
 end
 
 def compute_scores(score_list)
 	score_list.each{|player| player.count_score}
+	score_list.each{|player| player.generate_final_score}
 end
 
 def all_players_turns(score_list)
@@ -116,7 +128,7 @@ end
 def reveal_score_results(score_list)
 	score_list.each_with_index do |player, index|
 		puts "#{player.name}'s score is: "
-		print "#{player.score} \n"
+		print "#{player.final_score} \n"
 	end
 
 	puts "\n"
