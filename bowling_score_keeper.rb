@@ -1,5 +1,7 @@
 class Bowling_Score
 	attr_reader :name, :score
+	attr_writer :score
+
 	def initialize(player_name)
 		@name = player_name
 		@score = 0
@@ -52,8 +54,15 @@ end
 
 def all_players_turns(score_list)
 	score_list.each do |player|
-
+		player.score += ask_for_pins_hit(player)
 	end
+end
+
+def ask_for_pins_hit(player)
+	puts "Its #{player.name}'s turn!"
+	puts "How many pins did #{player.name} hit? (Dont lie now)"
+	pins_hit = gets.chomp.to_i
+	return pins_hit
 end
 
 def reveal_score_results(score_list)
