@@ -41,7 +41,6 @@ class Bowling_Score
 	end
 
 	def generate_final_score 
-		p @score
 		10.times{@final_score << @score.shift}
 		@final_score = @final_score.inject(:+)
 	end
