@@ -1,0 +1,27 @@
+.score-board{
+	border:5px solid red;
+	width: 800px;
+}
+
+.ball-1{
+	display:inline-block;
+	font-size: 200%;
+}
+.ball-2{
+	display:inline-block;
+	float: right;
+	font-size: 200%;
+}
+
+.score-frame{
+	display:inline-block;
+	border:  3px solid black;
+	width: 10%;
+	height: 10%;
+}
+
+.total-score{
+	text-align: center;
+	font-size: 200%;
+	float:right;
+}	
