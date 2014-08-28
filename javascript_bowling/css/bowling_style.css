@@ -3,6 +3,22 @@
 	width: 800px;
 }
 
+.player-row{
+	height: 80;
+	border: 2px solid green;
+}
+
+.score-frame{
+	display:inline-block;
+	border:  3px solid black;
+	width: 10%;
+	height: 95%;
+}
+
+.top-row-score{
+	height: 45%;
+}
+
 .ball-1{
 	display:inline-block;
 	font-size: 200%;
@@ -13,15 +29,12 @@
 	font-size: 200%;
 }
 
-.score-frame{
-	display:inline-block;
-	border:  3px solid black;
-	width: 10%;
-	height: 10%;
+.bottom-row-score{
+	height: 45%;
 }
 
 .total-score{
-	text-align: center;
+	text-align: right;
 	font-size: 200%;
-	float:right;
 }	
+
