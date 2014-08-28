@@ -8,6 +8,11 @@
 	clear: both;
 	float:left;
 }
+.player-name{
+	float:left;
+	min-width:80px;
+	min-height: 80px;
+}
 
 .score-frame{
 	float:left;
