@@ -17,13 +17,14 @@ Game.prototype = {
 	startGame: function(){
 		this.allPlayersScores.addAllPlayers(this.numberOfPlayers)
 		for(var turn=0; turn<10; turn++){
-			this.gameSequence()
+			// this.gameSequence(turn)
 		}
 	},
 
 	gameSequence: function(){
 		for(var player=0; player<this.numberOfPlayers; player++){
 			var roundScore = this.askForPlayerTurn(this.playersNames[player]) 
+			this.allPlayersScores.saveScores(player, turn, roundScore)
 		// ask the player for the first set of pins knocked down
 		//check to see if it was a strike
 			//if not a strike 
@@ -37,7 +38,7 @@ Game.prototype = {
 		thisRoundsScore.push( prompt( "Player " + playersName + "'s turn, ball 1", "1-9, ST for Strike") )
 		
 		if (thisRoundsScore[0] == "ST" || thisRoundsScore[0] == 10){
-			return "ST"
+			return thisRoundsScore
 		}else{
 			thisRoundsScore.push( prompt( "Player" + playersName + "'s turn, ball 2", "1-10, 10 will count as spare") )
 		}
