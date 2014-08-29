@@ -17,10 +17,10 @@ PlayerScores.prototype = {
 			this.playerList.push(fullRow)
 		}
 	},
-	saveScores: function(player, turn, turnScores){
-		this.playerList[player][turn].ballOne = turnScores[0]
-		if (turnScores[1]){
-			this.playerList[player][turn].ballTwo = turnScores[1]
+	saveScores: function(player, turn, roundScores){
+		this.playerList[player][turn].ballOne = roundScores[0]
+		if (roundScores[1]){
+			this.playerList[player][turn].ballTwo = roundScores[1]
 		}
 	}
 }

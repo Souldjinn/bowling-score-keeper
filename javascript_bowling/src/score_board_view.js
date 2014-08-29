@@ -5,6 +5,13 @@ var ScoreBoardDisplay = function(){
 }
 
 ScoreBoardDisplay.prototype = {
+	updateScoreBoard: function(player, turn, roundScores){
+		var player = document.querySelectorAll('.player-row')[player]
+		var frame = player.querySelectorAll('.score-frame')[turn]
+			frame.querySelector('.ball-1').innerHTML = roundScores[0]
+			frame.querySelector('.ball-2').innerHTML = roundScores[1]
+
+	},
 	setUpFirstRow: function(){
 		for(var i=1; i<10; i++){
 			this.playerRow.appendChild(this.scoreFrame.cloneNode(true,true))

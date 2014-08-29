@@ -23,13 +23,10 @@ Game.prototype = {
 
 	gameSequence: function(turn){
 		for(var player=0; player<this.numberOfPlayers; player++){
-			var roundScore = this.askForPlayerTurn(this.playersNames[player]) 
-			this.allPlayersScores.saveScores(player, turn, roundScore)
-		// ask the player for the first set of pins knocked down
-		//check to see if it was a strike
-			//if not a strike 
-			//ask the player for the second set of pins knocked down
-		//
+			var roundScores = this.askForPlayerTurn(this.playersNames[player]) 
+			this.allPlayersScores.saveScores(player, turn, roundScores)
+			this.display.updateScoreBoard(player, turn, roundScores)
+		
 		}
 	},
 
