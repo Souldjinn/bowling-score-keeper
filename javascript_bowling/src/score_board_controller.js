@@ -10,24 +10,39 @@ function Game(){
 	this.display = new ScoreBoardDisplay()
 	this.allPlayersScores = new PlayerScores()
 	this.numberOfPlayers = 0
+	this.playersNames = []
 }
 
 Game.prototype = { 
 	startGame: function(){
 		this.allPlayersScores.addAllPlayers(this.numberOfPlayers)
-		for(var x=0; x<10; x++){
+		for(var turn=0; turn<10; turn++){
 			this.gameSequence()
 		}
 	},
 
 	gameSequence: function(){
-		// initialize model that will hold state of the game(player rows and frames)
+		for(var player=0; player<this.numberOfPlayers; player++){
+			var roundScore = this.askForPlayerTurn(this.playersNames[player]) 
 		// ask the player for the first set of pins knocked down
 		//check to see if it was a strike
 			//if not a strike 
 			//ask the player for the second set of pins knocked down
 		//
+		}
+	},
 
+	askForPlayerTurn: function(playersName){
+		var thisRoundsScore = []
+		thisRoundsScore.push( prompt( "Player " + playersName + "'s turn, ball 1", "1-9, ST for Strike") )
+		
+		if (thisRoundsScore[0] == "ST" || thisRoundsScore[0] == 10){
+			return "ST"
+		}else{
+			thisRoundsScore.push( prompt( "Player" + playersName + "'s turn, ball 2", "1-10, 10 will count as spare") )
+		}
+
+		return thisRoundsScore		
 	},
 
 	playerAmountPrompt: function(){
@@ -36,11 +51,10 @@ Game.prototype = {
 	},
 
 	playerNamesPrompt: function(){
-		var playersNames = []
 		for(var i=0; i<this.numberOfPlayers; i++){
-			playersNames.push( prompt( "Enter a name for player " + ( i+1 ), "Name") )
+			this.playersNames.push( prompt( "Enter a name for player " + ( i+1 ), "Name") )
 		}
-		this.display.setUpPlayerNames(playersNames)
+		this.display.setUpPlayerNames(this.playersNames)
 	}
 }
 
