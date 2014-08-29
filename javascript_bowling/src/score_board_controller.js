@@ -24,9 +24,9 @@ Game.prototype = {
 	gameSequence: function(turn){
 		for(var player=0; player<this.numberOfPlayers; player++){
 			var roundScores = this.askForPlayerTurn(this.playersNames[player]) 
-			this.allPlayersScores.saveScores(player, turn, roundScores)
-			this.display.updateScoreBoard(player, turn, roundScores)
-		
+			var updatedFrame = this.allPlayersScores.saveScores(player, turn, roundScores)
+			this.display.updateScoreBoard(player, turn, updatedFrame)
+			// this.allPlayerScores.checkStrikesAndSpares()
 		}
 	},
 

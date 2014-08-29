@@ -18,10 +18,16 @@ PlayerScores.prototype = {
 		}
 	},
 	saveScores: function(player, turn, roundScores){
-		this.playerList[player][turn].ballOne = roundScores[0]
+		var currentRoundFrame = this.playerList[player][turn]
+
+		currentRoundFrame.ballOne = roundScores[0]
+		currentRoundFrame.total = 10
+
 		if (roundScores[1]){
-			this.playerList[player][turn].ballTwo = roundScores[1]
+			currentRoundFrame.ballTwo = roundScores[1]
+			currentRoundFrame.total = roundScores[0] + roundScores[1]
 		}
+		return currentRoundFrame
 	}
 }
 

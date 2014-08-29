@@ -5,12 +5,13 @@ var ScoreBoardDisplay = function(){
 }
 
 ScoreBoardDisplay.prototype = {
-	updateScoreBoard: function(player, turn, roundScores){
+	updateScoreBoard: function(player, turn, updatedFrame){
 		var player = document.querySelectorAll('.player-row')[player]
 		var frame = player.querySelectorAll('.score-frame')[turn]
-			frame.querySelector('.ball-1').innerHTML = roundScores[0]
-			frame.querySelector('.ball-2').innerHTML = roundScores[1]
-
+	
+			frame.querySelector('.ball-1').innerHTML = updatedFrame.ballOne
+			frame.querySelector('.ball-2').innerHTML = updatedFrame.ballTwo
+			frame.querySelector('.total-score').innerHTML = updatedFrame.total
 	},
 	setUpFirstRow: function(){
 		for(var i=1; i<10; i++){
