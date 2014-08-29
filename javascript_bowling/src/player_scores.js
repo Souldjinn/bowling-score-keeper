@@ -18,7 +18,10 @@ PlayerScores.prototype = {
 		}
 	},
 	saveScores: function(player, turn, turnScores){
-	
+		this.playerList[player][turn].ballOne = turnScores[0]
+		if (turnScores[1]){
+			this.playerList[player][turn].ballTwo = turnScores[1]
+		}
 	}
 }
 

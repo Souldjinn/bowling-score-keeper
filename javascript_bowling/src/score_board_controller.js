@@ -17,11 +17,11 @@ Game.prototype = {
 	startGame: function(){
 		this.allPlayersScores.addAllPlayers(this.numberOfPlayers)
 		for(var turn=0; turn<10; turn++){
-			// this.gameSequence(turn)
+			this.gameSequence(turn)
 		}
 	},
 
-	gameSequence: function(){
+	gameSequence: function(turn){
 		for(var player=0; player<this.numberOfPlayers; player++){
 			var roundScore = this.askForPlayerTurn(this.playersNames[player]) 
 			this.allPlayersScores.saveScores(player, turn, roundScore)
