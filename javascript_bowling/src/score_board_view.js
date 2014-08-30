@@ -5,13 +5,21 @@ var ScoreBoardDisplay = function(){
 }
 
 ScoreBoardDisplay.prototype = {
+	updateTotalsOnBoard: function(player, turn, playerRow){
+			var player = document.querySelectorAll('.player-row')[player]
+
+			for(var i = 0; i<=turn; i++){
+				player.querySelectorAll('.score-frame')[i].querySelector('.total-score').innerHTML = playerRow[i].cumulativeTotal
+			}
+	},
+
 	updateScoreBoard: function(player, turn, updatedFrame){
 		var player = document.querySelectorAll('.player-row')[player]
 		var frame = player.querySelectorAll('.score-frame')[turn]
 	
 			frame.querySelector('.ball-1').innerHTML = updatedFrame.ballOne
 			frame.querySelector('.ball-2').innerHTML = updatedFrame.ballTwo
-			frame.querySelector('.total-score').innerHTML = updatedFrame.total
+			frame.querySelector('.total-score').innerHTML = updatedFrame.cumulativeTotal
 	},
 	setUpFirstRow: function(){
 		for(var i=1; i<10; i++){
