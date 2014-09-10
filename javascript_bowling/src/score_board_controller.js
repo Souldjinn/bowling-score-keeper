@@ -54,13 +54,14 @@ Game.prototype = {
 	stringsToInts: function(thisRoundsScore){
 		var modifiedArray = []
 		for(var y = 0; y<thisRoundsScore.length; y++){
-			modifiedArray.push( parseInt( thisRoundsScore[y] ) )
+			modifiedArray.push( parseInt( thisRoundsScore[y], 10 ) )
 		}
 		return modifiedArray
 	},
 
 	playerAmountPrompt: function(){
 		this.numberOfPlayers = prompt("Enter the number of players", "1")
+		this.numberOfPlayers = parseInt( this.numberOfPlayers, 10 )
 		this.display.setUpColumns( this.numberOfPlayers )	
 	},
 
